@@ -9,7 +9,6 @@ public class MainApp {
 	public static void main(String[] args) {
 
 		Employee emp = new Employee();
-//		emp.setID(1);
 		emp.setName("Yash");
 		emp.setCity("Tandulwadi");
 
@@ -19,51 +18,47 @@ public class MainApp {
 		Transaction tra = ses.beginTransaction();
 
 		// ------------------------|| Insert Operation ||--------------------------
-//		try {
-//			ses.save(emp);
-//			tra.commit(); // save permantly
-//			System.out.println("------|| User Added Successfully!! ||------");
-//
-//		} catch (Exception e) {
-//			tra.rollback();
-//			e.printStackTrace();
-//			System.out.println("------|| User Added Not Successfully Due To The Error..! ||------");
-//		}
+		try {
+			ses.save(emp);
+			tra.commit(); // save permantly
+			System.out.println("------|| User Added Successfully!! ||------");
+
+		} catch (Exception e) {
+			tra.rollback();
+			e.printStackTrace();
+			System.out.println("------|| User Added Not Successfully Due To The Error..! ||------");
+		}
 
 		// ------------------------|| Select Operation ||---------------------------
-//		try {
-//			Employee emp1 = ses.get(Employee.class, 5);
-//			if (emp1 != null) {
-//				System.out.println("------|| Show The Table ||------");
-//				System.out.println(emp1.getID());
-//				System.out.println(emp1.getName());
-//				System.out.println(emp1.getCity());
-//			} else {
-//				System.out.println("------|| User Not Found ||------");
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
+		try {
+			Employee emp1 = ses.get(Employee.class, 5);
+			if (emp1 != null) {
+				System.out.println("------|| Show The Table ||------");
+				System.out.println(emp1.getID());
+				System.out.println(emp1.getName());
+				System.out.println(emp1.getCity());
+			} else {
+				System.out.println("------|| User Not Found ||------");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		// --------------------|| Updated Successfully ||----------------------
 		
 
-//		try {
-//			Employee emp2 = ses.get(Employee.class, 4);
-//			emp2.setID(4);
-//			emp2.setName("Omkar");
-////			emp2.setCity("Satara");
-//			
-//			System.out.println("------|| Updated Successfylly! ||------");
-//			ses.saveOrUpdate(emp2);
-//			tra.commit();
-//
-//			System.out.println(emp2.getID() + emp2.getName() + emp2.getCity());
-////			System.out.println(emp2.getName());
-////			System.out.println(emp2.getCity());
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
+		try {
+			Employee emp2 = ses.get(Employee.class, 4);
+			emp2.setID(4);
+			emp2.setName("Omkar");
+			
+			System.out.println("------|| Updated Successfylly! ||------");
+			ses.saveOrUpdate(emp2);
+			tra.commit();
+			System.out.println(emp2.getID() + emp2.getName() + emp2.getCity());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		
 		// --------------------|| Delete Successfully ||----------------------
